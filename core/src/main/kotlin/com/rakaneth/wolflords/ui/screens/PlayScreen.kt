@@ -13,7 +13,7 @@ import squidpony.squidgrid.gui.gdx.SparseLayers
 import squidpony.squidgrid.gui.gdx.SquidMessageBox
 import squidpony.squidgrid.gui.gdx.SquidPanel
 
-class TitleScreen : WolfScreen("title") {
+class PlayScreen : WolfScreen("title") {
     private val slab = DefaultResources.getSlabFamily()
     private val batch = SpriteBatch()
     private val vport = StretchViewport(fullPixelW, fullPixelH)
