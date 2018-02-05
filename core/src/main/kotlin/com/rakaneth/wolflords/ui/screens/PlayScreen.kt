@@ -42,7 +42,7 @@ class PlayScreen : WolfScreen("play") {
             erase()
             putBorders(FW, "Stats")
             put(1, 1, toDraw)
-            drawBar(toDraw.length() + 2, 1, 10, 50, 100, SColor.CRIMSON, SColor.BLUE)
+            drawBar(toDraw.length() + 2, 1, 10, 85, 100, SColor.CRIMSON, SColor.BLUE)
         }
     }
 
