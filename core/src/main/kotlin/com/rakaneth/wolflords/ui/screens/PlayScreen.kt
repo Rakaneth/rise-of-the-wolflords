@@ -4,25 +4,20 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch
 import com.badlogic.gdx.scenes.scene2d.Actor
 import com.badlogic.gdx.scenes.scene2d.Stage
 import com.badlogic.gdx.utils.viewport.StretchViewport
-import com.rakaneth.wolflords.ui.setBoundsXY
-import com.rakaneth.wolflords.ui.setPosXY
-import com.rakaneth.wolflords.ui.setUp
-import com.rakaneth.wolflords.ui.standardSetup
-import squidpony.squidgrid.gui.gdx.DefaultResources
-import squidpony.squidgrid.gui.gdx.SparseLayers
-import squidpony.squidgrid.gui.gdx.SquidMessageBox
-import squidpony.squidgrid.gui.gdx.SquidPanel
+import com.rakaneth.wolflords.ui.*
+import squidpony.squidgrid.gui.gdx.*
 
-class PlayScreen : WolfScreen("title") {
-    private val slab = DefaultResources.getSlabFamily()
+class PlayScreen : WolfScreen("play") {
+    private val slab = DefaultResources.getSlabFamily().standardSetup()
     private val batch = SpriteBatch()
     private val vport = StretchViewport(fullPixelW, fullPixelH)
     private val stage = Stage(vport, batch)
     private val mapLayers = SparseLayers(mapW, mapH, cellW, cellH,
-            slab.copy().standardSetup())
-    private val statPanel = SquidPanel(hudW, hudH, slab.copy().standardSetup())
-    private val msgPanel = SquidMessageBox(msgW, msgH, slab.copy().standardSetup())
-    private val infoPanel = SquidPanel(infoW, infoH, slab.copy().standardSetup())
+            slab)
+    private val statPanel = SquidPanel(hudW, hudH, slab.copy())
+    private val msgPanel = SquidMessageBox(msgW, msgH, slab.copy())
+    private val infoPanel = SquidPanel(infoW, infoH, slab.copy())
+    private val FW = SColor.FLOAT_WHITE
 
     init {
         mapLayers.setBoundsXY(0, hudH, mapW, mapH)
@@ -34,14 +29,47 @@ class PlayScreen : WolfScreen("title") {
         }
     }
 
+    private fun drawMap() {
+        with (mapLayers) {
+            clear()
+            put(0, 0, "Map".toICString())
+        }
+    }
 
+    private fun drawStats() {
+        val toDraw = "Test Dude 1".markup("Green", "*", "/")
+        with (statPanel) {
+            erase()
+            putBorders(FW, "Stats")
+            put(1, 1, toDraw)
+            drawBar(toDraw.length() + 2, 1, 10, 50, 100, SColor.CRIMSON, SColor.BLUE)
+        }
+    }
+
+    private fun drawMsg() {
+        with (msgPanel) {
+            erase()
+            putBorders(FW, "Messages")
+        }
+    }
+
+    private fun drawInfo() {
+        with (infoPanel) {
+            erase()
+            putBorders(FW, "InfoPanel")
+        }
+    }
 
     override fun render() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        drawMap()
+        drawStats()
+        drawMsg()
+        drawInfo()
+        stage.act()
+        stage.draw()
     }
 
-    override fun resize() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun resize(width: Int, height: Int) {
+        vport.update(width, height, false)
     }
-
 }

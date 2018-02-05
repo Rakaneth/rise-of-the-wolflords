@@ -14,11 +14,11 @@ import squidpony.squidgrid.gui.gdx.TextCellFactory
 fun SquidPanel.drawBar(x: Int, y: Int, barLength: Int, curValue: Number, maxValue: Number, fillColor: SColor, emptyColor: SColor) {
     require(x + barLength < mapW, {"Bar draws offscreen"})
     (x until x + barLength).forEach {
-        put(it, y, ' ', emptyColor)
+        put(it, y, emptyColor)
     }
     val toBoxes = curValue.toInt() * barLength / maxValue.toInt()
     (x until x + toBoxes).forEach {
-        put(it, y, ' ', fillColor)
+        put(it, y, fillColor)
     }
 }
 
