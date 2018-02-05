@@ -1,23 +1,30 @@
 package com.rakaneth.wolflords.ui.screens
 
+import com.badlogic.gdx.InputAdapter
+import com.badlogic.gdx.ai.fsm.DefaultStateMachine
 import com.badlogic.gdx.graphics.g2d.SpriteBatch
 import com.badlogic.gdx.scenes.scene2d.Actor
 import com.badlogic.gdx.scenes.scene2d.Stage
 import com.badlogic.gdx.utils.viewport.StretchViewport
 import com.rakaneth.wolflords.ui.*
 import squidpony.squidgrid.gui.gdx.*
+import squidpony.squidmath.Coord
 
 class PlayScreen : WolfScreen("play") {
     private val slab = DefaultResources.getSlabFamily().standardSetup()
     private val batch = SpriteBatch()
     private val vport = StretchViewport(fullPixelW, fullPixelH)
-    private val stage = Stage(vport, batch)
-    private val mapLayers = SparseLayers(mapW, mapH, cellW, cellH,
+    val stage = Stage(vport, batch)
+    val mapLayers = SparseLayers(mapW, mapH, cellW, cellH,
             slab)
-    private val statPanel = SquidPanel(hudW, hudH, slab.copy())
-    private val msgPanel = SquidMessageBox(msgW, msgH, slab.copy())
-    private val infoPanel = SquidPanel(infoW, infoH, slab.copy())
+    val statPanel = SquidPanel(hudW, hudH, slab.copy())
+    val msgPanel = SquidMessageBox(msgW, msgH, slab.copy())
+    val infoPanel = SquidPanel(infoW, infoH, slab.copy())
     private val FW = SColor.FLOAT_WHITE
+    var cursor = Coord.get(0, 0)
+    var buttonP = -1
+    var menuState = DefaultStateMachine<PlayScreen, MenuState>(this, MenuState.NULL)
+    var input = SquidInput()
 
     init {
         mapLayers.setBoundsXY(0, hudH, mapW, mapH)
@@ -27,6 +34,7 @@ class PlayScreen : WolfScreen("play") {
         arrayOf<Actor>(mapLayers, statPanel, msgPanel, infoPanel).forEach {
             stage.addActor(it)
         }
+        initInput(stage, input)
     }
 
     private fun drawMap() {
@@ -57,7 +65,13 @@ class PlayScreen : WolfScreen("play") {
         with (infoPanel) {
             erase()
             putBorders(FW, "InfoPanel")
+            put(1, 1, "Cursor at $cursor")
+            put(1, 2, "Last button pressed: $buttonP")
         }
+    }
+
+    private fun drawCursor() {
+        mapLayers.put(cursor.x, cursor.y, SColor.LIGHT_BLUE)
     }
 
     override fun render() {
@@ -65,11 +79,19 @@ class PlayScreen : WolfScreen("play") {
         drawStats()
         drawMsg()
         drawInfo()
+        drawCursor()
+        if (input.hasNext()) input.next()
         stage.act()
         stage.draw()
     }
 
+    override fun enter() {
+        menuState.changeState(MenuState.PLAY)
+        super.enter()
+    }
+
     override fun resize(width: Int, height: Int) {
+        input.mouse.reinitialize(width / fullWF, height / fullHF, fullWF, fullHF, 0, 0)
         vport.update(width, height, false)
     }
 }

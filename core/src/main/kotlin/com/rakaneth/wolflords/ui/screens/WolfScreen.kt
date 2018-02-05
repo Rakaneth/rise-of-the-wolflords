@@ -1,7 +1,14 @@
 package com.rakaneth.wolflords.ui.screens
 
-import com.badlogic.gdx.graphics.g2d.SpriteBatch
+import com.badlogic.gdx.Gdx
+import com.badlogic.gdx.InputMultiplexer
+import com.badlogic.gdx.InputProcessor
+import com.badlogic.gdx.scenes.scene2d.Stage
 
+const val fullW = 80
+const val fullH = 40
+const val fullWF = fullW.toFloat()
+const val fullHF = fullH.toFloat()
 const val mapW = 80
 const val mapH = 30
 const val hudW = 26
@@ -12,8 +19,10 @@ const val infoW = 26
 const val infoH = 10
 const val cellW = 16f
 const val cellH = 20f
-const val fullPixelW = 80 * cellW
-const val fullPixelH = 40 * cellH
+const val fullPixelW = fullW * cellW
+const val fullPixelH = fullH * cellH
+const val mapWF = mapW.toFloat()
+const val mapHF = mapH.toFloat()
 
 abstract class WolfScreen(private val screenName: String) {
     companion object {
@@ -39,6 +48,10 @@ abstract class WolfScreen(private val screenName: String) {
 
     open fun exit() {
         println("Exited $screenName screen.")
+    }
+
+    fun initInput(stage: Stage, input: InputProcessor) {
+        Gdx.input.inputProcessor = InputMultiplexer(stage, input)
     }
 
     abstract fun render()

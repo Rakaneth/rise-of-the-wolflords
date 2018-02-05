@@ -2,10 +2,14 @@ package com.rakaneth.wolflords
 
 import com.badlogic.gdx.ApplicationAdapter
 import com.badlogic.gdx.Gdx
+import com.badlogic.gdx.InputMultiplexer
+import com.badlogic.gdx.InputProcessor
 import com.badlogic.gdx.graphics.GL20
+import com.badlogic.gdx.scenes.scene2d.Stage
 import com.rakaneth.wolflords.ui.screens.PlayScreen
 import com.rakaneth.wolflords.ui.screens.WolfScreen
 import squidpony.squidgrid.gui.gdx.SColor
+import squidpony.squidgrid.gui.gdx.SquidInput
 
 class WolfGame : ApplicationAdapter() {
 
@@ -24,7 +28,7 @@ class WolfGame : ApplicationAdapter() {
     }
 
     override fun resize(width: Int, height: Int) {
-        WolfScreen.curScreen?.resize(width, height)
         super.resize(width, height)
+        WolfScreen.curScreen?.resize(width, height)
     }
 }
