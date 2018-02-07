@@ -43,7 +43,7 @@ enum class MenuState(val theMenu: WolfSelector?) : State<PlayScreen> {
                         override fun touchUp(screenX: Int, screenY: Int, pointer: Int, button: Int): Boolean {
                             val c = Coord.get(screenX, screenY)
                             when {
-                                inMap(c) -> println("map clicked at $c")
+                                inMap(c) -> entity!!.cursor = c
                                 inStat(c) -> println("stats clicked at row ${statRow(c)}")
                                 inInfo(c) -> println("info clicked at row ${statRow(c)}")
                                 else -> println("something else clicked")
