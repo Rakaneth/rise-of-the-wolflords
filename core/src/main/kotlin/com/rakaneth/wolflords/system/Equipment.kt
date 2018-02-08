@@ -20,6 +20,60 @@ data class Equipment(
         val dmg: Int = 0,
         val sav: Int = 0,
         val prot: Int = 0,
-        val curProt: Int = 0
-) : Drawable, Mappable, Taggable {
+        val curProt: Int = 0,
+        val dly: Int = 0
+) : Drawable, Mappable, Taggable, Storeable
+
+private val basics = mapOf(
+        "Clothes" to Slot.ARMOR,
+        "Fists" to Slot.WEAPON,
+        "Nothing" to Slot.TRINKET
+)
+
+fun WolfUnit.dequip(slot: Slot) {
+    val theItem: Storeable
+    when (slot) {
+        Slot.WEAPON -> {
+            theItem = wpn
+            wpn = myFists
+        }
+        Slot.ARMOR -> {
+            theItem = arm
+            arm = myArm
+        }
+        Slot.TRINKET -> {
+            theItem = trk
+            trk = myTrk
+        }
+    }
+    discard(theItem)
+}
+
+fun WolfUnit.discard(item: Storeable) {
+    val un = this
+    if (playerUnit) {
+        GameState.playerCollection.add(item)
+    } else {
+        with (item as Mappable) {
+            mapID = un.mapID
+            pos = un.pos
+        }
+    }
+}
+
+fun WolfUnit.equip(item: Equipment, slot: Slot) {
+    when (slot) {
+        Slot.WEAPON -> {
+            if (wpn != myFists) dequip(slot)
+            wpn = item
+        }
+        Slot.ARMOR -> {
+            if (arm != myArm) dequip(slot)
+            arm = item
+        }
+        Slot.TRINKET -> {
+            if (trk != myTrk) dequip(slot)
+            trk = item
+        }
+    }
 }

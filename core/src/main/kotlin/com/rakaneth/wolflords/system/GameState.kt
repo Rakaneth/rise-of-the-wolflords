@@ -8,6 +8,7 @@ object GameState: Serializable {
     var maps: MutableMap<String, WolfMap> = mutableMapOf()
     var drawables: MutableMap<String, Drawable> = mutableMapOf()
     var playerVisible: Array<DoubleArray> = arrayOf()
+    val playerCollection: MutableList<Storeable> = mutableListOf()
 
     fun unitByID(id: String): WolfUnit = drawables[id]!! as WolfUnit
     fun mapByID(id: String): WolfMap = maps[id]!!

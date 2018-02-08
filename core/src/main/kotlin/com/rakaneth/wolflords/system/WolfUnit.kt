@@ -13,6 +13,7 @@ class WolfUnit(val id: String, override var mapID: String): Drawable, Mappable, 
     override var bg: String = "Transparent"
     override val tags: MutableList<String> = mutableListOf()
     override var name: String = ""
+    var playerUnit: Boolean = false
     var str: Int = 1
     var stam: Int = 1
     var spd: Int = 1
@@ -31,9 +32,12 @@ class WolfUnit(val id: String, override var mapID: String): Drawable, Mappable, 
     var vision: Double = 6.0
 
     private var aiTree: String = "data/ai/hunt.tree"
-    //var wpn: Equipment = ItemBuilder.buildEquip("fists");
-    //var arm: Equipment = ItemBuilder.buildEquip("clothes")
-    //var trk: Equipment = ItemBuilder.buildEquip("nobling")
+    val myFists = ItemBuilder.buildEquip("fists")
+    val myArm = ItemBuilder.buildEquip("clothes")
+    val myTrk = ItemBuilder.buildEquip("nobling")
+    var wpn: Equipment = myFists
+    var arm: Equipment = myArm
+    var trk: Equipment = myTrk
 
     @Transient
     lateinit var bTree: BehaviorTree<WolfUnit>

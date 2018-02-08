@@ -1,0 +1,172 @@
+- wolfFangs:
+  name: Wolf Fangs
+  desc: Sharp fangs from a large wolf.
+  glyph: v
+  color: Crimson
+  rarity: 20
+  slot: WEAPON
+  dmg: 1
+  dly: 4
+  tags:
+    - melee
+    - natural
+    - wolf
+    - pierce
+- ironSword:
+  name: Iron Sword
+  desc: A serviceable, sturdy shortsword.
+  glyph: 2020
+  color: DB Iron
+  rarity: 15
+  slot: WEAPON
+  atk: 2
+  dmg: 1
+  dly: 4
+  tags:
+    - melee
+    - slash
+    - pierce
+- daggers:
+  name: Daggers
+  desc: A pair of common daggers.
+  glyph: 2356
+  color: DB Iron
+  rarity: 20
+  slot: WEAPON
+  atk: 2
+  dmg: 2
+  dly: 4
+  tags: 
+    - melee
+    - close
+    - pierce
+    -slash
+- mace:
+  name: Mace
+  desc: An intimidating iron mace
+  glyph: |
+  color: Silver
+  rarity: 15
+  slot: WEAPON
+  dmg: 3
+  dly: 6
+  tags: 
+    - melee
+    - bash
+- greatAxe:
+  name: Greataxe
+  desc: A heavy bearded axe.
+  glyph: \\
+  coior: White
+  rarity: 10
+  slot: WEAPON
+  atk: 1
+  dmg: 4
+  dly: 7
+  tags:
+    - melee
+    - slash
+- wolfFur:
+  name: Wolf Furs
+  desc: A thick layer of shaggy wolf fur.
+  glyph: )
+  color: CW Light Brown
+  rarity: 20
+  slot: ARMOR
+  sav: 1
+  dly: 5
+  prot: 10
+  tags: 
+    - natural
+- leather:
+  name: Leather Jerkin
+  desc: A sturdy, supple leather jack.
+  glyph: )
+  color: Burnt Umber
+  rarity: 20
+  slot: ARMOR
+  sav: 1
+  dly: 4
+  prot: 15
+- chainMail:
+  name: Chainmail
+  desc: A heavy chain hauberk.
+  glyph: "]"
+  color: DB Iron
+  rarity: 10
+  slot: ARMOR
+  dly: 7
+  prot: 25
+  tags:
+    - O-natural
+- fellHammer:
+  name: The Fell Hammer
+  desc: A massive warhammer covered in bloody spikes.
+  glyph: 0188
+  color: CW Drab Purple
+  slot: WEAPON
+  atk: 3
+  dmg: 3
+  dly: 7
+  prot: 10
+  tags:
+    - dark
+    - magic
+    - melee
+    - bash
+- shadowRobe:
+  name: The Robe of Shadow
+  desc: A tattered robe that seems to cast deep shadows around the wearer.
+  glyph: )
+  color: CW Drab Purple
+  slot: ARMOR
+  dfp: 3
+  sav: 3
+  dly: 4
+  prot: 10
+  tags:
+    - O-dark
+    - O-magic
+    - X-holy
+- wolfCharm:
+  name: Wolf Charm
+  desc: A necklace of fangs and claws on leather cord.
+  glyph: "="
+  color: CW Light Brown
+  rarity: 5
+  slot: TRINKET
+  atk: 1
+  dmg: 1
+  tags:
+    - O-natural
+    - O-wolf
+- ravenSymbol:
+  name: Raven Symbol
+  desc: A holy symbol of the Raven.
+  glyph: "="
+  color: Silver Grey
+  rarity: 2
+  slot: TRINKET
+  dfp: 1
+  sav: 1
+  prot: 5
+  tags:
+    - holy
+- fists:
+  name: Fists
+  desc: Bare-handed fisticuffs.
+  slot: WEAPON
+  tags:
+    - natural
+- clothes:
+  name: Clothes
+  desc: Rough civilian clothing.
+  slot: ARMOR
+  tags:
+    - O-slash
+- nobling:
+  name: Nothing
+  desc: No adornment.
+  slot: TRINKET
+
+

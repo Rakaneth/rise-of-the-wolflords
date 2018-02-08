@@ -27,3 +27,5 @@ interface Taggable {
     val tags: MutableList<String>
     fun hasTag(tag: String): Boolean = tags.contains(tag)
 }
+
+interface Storeable
