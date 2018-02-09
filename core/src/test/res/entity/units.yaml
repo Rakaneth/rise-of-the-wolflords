@@ -1,2 +1,190 @@
 heroFighter:
   desc: A warrior of the King's Hand.
+  str: 2
+  stam: 2
+  wpn: ironSword
+  arm: chainMail
+  tags:
+    - warrior
+heroRogue:
+  desc: A scout of the King's Hand.
+  spd: 2
+  skl: 2
+  wpn: daggers
+  arm: leather
+  tags:
+    - stealth
+heroCleric:
+  desc: An Oathsworn of the Raven.
+  stam: 3
+  wpn: mace
+  arm: chainMail
+wolf:
+  name: Wolf
+  desc: A large, shaggy wolf.
+  str: 2
+  stam: 2
+  spd: 2
+  glyph: W
+  color: CW Light Brown
+  wpn: wolfFangs
+  arm: wolfFur
+  vision: 10
+  worthXP: 100
+  ai: wolf
+  tags:
+    - wolf
+alpha:
+  name: Alpha
+  desc: A large wolf leading a pack.
+  str: 4
+  stam: 3
+  spd: 2
+  skl: 2
+  glyph: W
+  color: Burnt Umber
+  wpn: wolfFangs
+  arm: wolfFur
+  vision: 10
+  worthXP: 300
+  ai: alpha
+  tags:
+    - wolf
+    - leader
+  skills:
+    - Howl
+dire:
+  name: Great Wolf
+  desc: A massive monster of a wolf, standing five feet at the shoulder.
+  str: 6
+  stam: 5
+  spd: 4
+  skl: 4
+  glyph: W
+  color: Silver Grey
+  wpn: wolfFangs
+  arm: wolfFur
+  vision: 12
+  worthXP: 500
+  ai: wolf
+  tags:
+    - wolf
+direAlpha:
+  name: Great Wolf Alpha
+  desc: The mightiest among wolves, these lupine titants lead packs of great wolves.
+  str: 8
+  stam: 8
+  spd: 7
+  skl: 7
+  glyph: W
+  color: Purple
+  wpn: wolfFangs
+  arm: wolfFur
+  vision: 15
+  worthXP: 1000
+  ai: alpha
+  tags:
+    - wolf
+    - leader
+  skills:
+    - Howl
+revenant:
+  name: Fallen Warrior
+  desc: A fallen warrior animated by foul magic.
+  str: 2
+  stam: 6
+  skl: 2
+  glyph: U
+  color: Silver Grey
+  wpn: ironSword
+  arm: chainMail
+  ai: hunt
+  worthXP: 400
+  tags:
+    - XX-holy
+    - OOOO-natural
+    - X-slash
+    - O-bash
+    - OO-pierce
+    - undead
+    - door
+    - solo
+skelly:
+  name: Jitterbones
+  desc: A skeleton animated by foul magic, clad in armor.
+  stam: 3
+  spd: 5
+  skl: 5
+  glyph: U
+  color: White
+  wpn: daggers
+  arm: chainMail
+  worthXP: 400
+  tags:
+    - XX-holy
+    - OOOO-natural
+    - O-slash
+    - OOOO-pierce
+    - X-bash
+    - undead
+    - door
+    - solo
+banshee:
+  name: Banshee
+  desc: A wailing spirit, eerie and translucent.
+  str: 3
+  stam: 2
+  spd: 8
+  skl: 3
+  glyph: U
+  color: White
+  vision: 6
+  worthXP: 500
+  tags:
+    - XX-holy
+    - X-magic
+    - O-melee
+    - OOOO-natural
+    - undead
+    - solo
+wolfLord:
+  name: Wolf Lord
+  desc: A savage man with wolflike features, covered in furs.
+  str: 7
+  stam: 7
+  spd: 7
+  skl: 7
+  glyph: "@"
+  color: CW Light Brown
+  wpn: wolfFangs
+  arm: wolfFur
+  trk: wolfCharm
+  vision: 10
+  worthXP: 1200
+  ai: alpha
+  tags:
+    - wolf
+    - door
+    - leader
+  skills:
+    - Howl
+margrave:
+  name: Margrave of Bones
+  desc: A frightening creature, thin as a rail, radiating menace and reeking of death.
+  str: 7
+  stam: 7
+  spd: 7
+  skl: 7
+  glyph: U
+  color: Purple
+  wpn: fellHammer
+  arm: shadowRobe
+  trk: phylactery
+  worthXP: 5000
+  ai: alpha
+  tags:
+    - undead
+    - door
+    - leader
+    - XX-holy
+    - OOOO-natural

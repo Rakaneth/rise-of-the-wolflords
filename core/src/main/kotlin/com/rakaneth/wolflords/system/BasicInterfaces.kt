@@ -28,4 +28,8 @@ interface Taggable {
     fun hasTag(tag: String): Boolean = tags.contains(tag)
 }
 
+interface Builder {
+    fun readFile(reader: java.io.Reader)
+}
+
 interface Storeable

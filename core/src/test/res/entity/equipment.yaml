@@ -95,10 +95,8 @@ chainMail:
   color: DB Iron
   rarity: 10
   slot: ARMOR
-  dly: 7
+  dly: 6
   prot: 25
-  tags:
-    - O-natural
 fellHammer:
   name: The Fell Hammer
   desc: A massive warhammer covered in bloody spikes.

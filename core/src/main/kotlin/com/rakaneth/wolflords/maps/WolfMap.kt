@@ -9,13 +9,13 @@ import squidpony.squidmath.Coord
 import squidpony.squidmath.GreasedRegion
 import java.io.Serializable
 
-const val WALL = '#'
+const val WALL = '\u2588'
 const val CLOSED = '+'
-const val FLOOR = '.'
+const val FLOOR = '\u00A0'
 const val OPEN = '/'
 const val OOB = 'x'
 private val DOORS = arrayOf('+', '/')
-private val walkables = arrayOf('.', '/', ':', ',')
+private val WALKABLES = arrayOf('.', '/', ':', ',')
 
 class WolfMap(
         val id: String,
@@ -24,7 +24,7 @@ class WolfMap(
         var light: Boolean = true
 ) : Serializable {
     var displayMap: Array<CharArray> = ArrayTools.fill('#', baseMap.size, baseMap[0].size)
-    var resistances = DungeonUtility.generateResistances(baseMap)
+    var resistances: Array<DoubleArray> = DungeonUtility.generateResistances(baseMap)
     var floors: GreasedRegion = GreasedRegion(resistances, 0.8)
     var tempRegion: GreasedRegion = floors.copy()
     val width
@@ -74,6 +74,9 @@ class WolfMap(
         tempRegion.remake(floors)
         //TODO: Colors
     }
+
+    fun isWalkable(c: Coord): Boolean = WALKABLES.contains(getTile(c))
+    fun isDoor(c: Coord): Boolean = DOORS.contains(getTile(c))
 
 
 }

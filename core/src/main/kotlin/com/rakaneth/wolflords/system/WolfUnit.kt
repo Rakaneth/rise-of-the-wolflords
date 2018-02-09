@@ -12,8 +12,9 @@ class WolfUnit(val id: String, override var mapID: String): Drawable, Mappable, 
     override var fg: String = "White"
     override var bg: String = "Transparent"
     override val tags: MutableList<String> = mutableListOf()
-    override var name: String = ""
+    override var name: String = "No name"
     var playerUnit: Boolean = false
+    var desc: String = "No desc"
     var str: Int = 1
     var stam: Int = 1
     var spd: Int = 1
@@ -21,10 +22,28 @@ class WolfUnit(val id: String, override var mapID: String): Drawable, Mappable, 
     var alive: Boolean =  true
     var curVit: Float = 0f
     val maxVit
-        get() = stam * 10
+        get() = stam + 7
     var curEnd: Float = 0f
     val maxEnd
         get() = (str + stam + spd + skl)
+    val atk
+        get() = skl + wpn.atk + arm.atk + trk.atk
+    val dfp
+        get() = spd + wpn.dfp + arm.dfp + trk.dfp
+    val sav
+        get() = stam + wpn.sav + arm.sav + trk.sav
+    val dmg
+        get() = str + wpn.dmg + arm.dmg + trk.dmg
+    val curProt
+        get() = wpn.curProt + arm.curProt + trk.curProt
+    val prot
+        get() = wpn.prot + arm.prot + trk.prot
+    val atkDly
+        get() = wpn.dly + 5
+    val movDly
+        get() = arm.dly + 5
+
+
     var xp: Int = 0
     val wolfMap
         get() = GameState.mapByID(mapID)
@@ -45,7 +64,7 @@ class WolfUnit(val id: String, override var mapID: String): Drawable, Mappable, 
 
     fun setAITree(treeShortName: String) {
         aiTree = "data/ai/$treeShortName.tree"
-        bTree = BehaviorTreeLibraryManager.getInstance().library.createBehaviorTree(aiTree, this)
+        //bTree = BehaviorTreeLibraryManager.getInstance().library.createBehaviorTree(aiTree, this)
     }
 
 }

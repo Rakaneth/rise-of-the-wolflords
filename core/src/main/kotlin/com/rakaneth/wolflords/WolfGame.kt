@@ -7,6 +7,7 @@ import com.badlogic.gdx.InputProcessor
 import com.badlogic.gdx.graphics.GL20
 import com.badlogic.gdx.scenes.scene2d.Stage
 import com.rakaneth.wolflords.system.ItemBuilder
+import com.rakaneth.wolflords.system.WolfUnitBuilder
 import com.rakaneth.wolflords.ui.screens.PlayScreen
 import com.rakaneth.wolflords.ui.screens.WolfScreen
 import squidpony.squidgrid.gui.gdx.SColor
@@ -23,7 +24,7 @@ class WolfGame : ApplicationAdapter() {
         PlayScreen()
         WolfScreen.setScreen("play")
         ItemBuilder.readFile(Gdx.files.internal(eqFile).reader())
-        //WolfUnitBuilder.readFile(Gdx.files.internal(unitFile).reader())
+        WolfUnitBuilder.readFile(Gdx.files.internal(unitFile).reader())
     }
 
     override fun render() {

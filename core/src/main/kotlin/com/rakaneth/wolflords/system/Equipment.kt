@@ -1,6 +1,7 @@
 package com.rakaneth.wolflords.system
 
 import squidpony.squidmath.Coord
+import java.io.Serializable
 
 enum class Slot {
     WEAPON, ARMOR, TRINKET;
@@ -22,13 +23,7 @@ data class Equipment(
         val prot: Int = 0,
         val curProt: Int = 0,
         val dly: Int = 0
-) : Drawable, Mappable, Taggable, Storeable
-
-private val basics = mapOf(
-        "Clothes" to Slot.ARMOR,
-        "Fists" to Slot.WEAPON,
-        "Nothing" to Slot.TRINKET
-)
+) : Drawable, Mappable, Taggable, Storeable, Serializable
 
 fun WolfUnit.dequip(slot: Slot) {
     val theItem: Storeable
