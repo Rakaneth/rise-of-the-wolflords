@@ -1,8 +1,9 @@
 package com.rakaneth.wolflords.system
 
-import com.badlogic.gdx.Gdx
-import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
+import com.fasterxml.jackson.databind.ObjectMapper
+import com.fasterxml.jackson.dataformat.yaml.YAMLFactory
 import com.fasterxml.jackson.module.kotlin.readValue
+import java.io.Reader
 import java.util.*
 
 private data class EquipInfo(
@@ -23,8 +24,7 @@ private data class EquipInfo(
 
 object ItemBuilder {
     private const val eqFile = "data/entity/equipment.yaml"
-    private val eqBP: Map<String, EquipInfo> = jacksonObjectMapper()
-            .readValue(Gdx.files.internal(eqFile).reader())
+    private lateinit var eqBP: Map<String, EquipInfo>
 
     fun buildEquip(buildID: String): Equipment {
         require(eqBP.containsKey(buildID), {"$buildID is not valid equipment, check spelling or file"})
@@ -43,5 +43,9 @@ object ItemBuilder {
                 prot = info.prot,
                 curProt = info.prot
         )
+    }
+
+    fun readFile(reader: Reader) {
+        eqBP = ObjectMapper(YAMLFactory()).readValue(reader)
     }
 }

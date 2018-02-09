@@ -28,7 +28,7 @@ class WolfUnit(val id: String, override var mapID: String): Drawable, Mappable, 
     var xp: Int = 0
     val wolfMap
         get() = GameState.mapByID(mapID)
-    var visible:  Array<DoubleArray> = ArrayTools.fill(0.0, wolfMap.width, wolfMap.height)
+    lateinit var visible:  Array<DoubleArray>
     var vision: Double = 6.0
 
     private var aiTree: String = "data/ai/hunt.tree"
@@ -38,6 +38,7 @@ class WolfUnit(val id: String, override var mapID: String): Drawable, Mappable, 
     var wpn: Equipment = myFists
     var arm: Equipment = myArm
     var trk: Equipment = myTrk
+
 
     @Transient
     lateinit var bTree: BehaviorTree<WolfUnit>

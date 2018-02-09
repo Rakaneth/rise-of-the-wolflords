@@ -3,8 +3,8 @@ package com.rakaneth.wolflords.system
 private fun WolfUnit.countPrefix(pattern: String): Int {
     val p = pattern.toRegex()
     return tags.map {
-        p.matchEntire(it)?.destructured?.let {
-            it.toString().length
+        p.matchEntire(it)?.destructured?.let { (pref) ->
+            pref.length
         } ?: 0
     }.sum()
 }
