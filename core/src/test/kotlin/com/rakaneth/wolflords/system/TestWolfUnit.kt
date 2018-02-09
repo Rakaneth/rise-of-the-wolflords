@@ -25,8 +25,16 @@ class TestWolfUnit {
     fun testPrefix() {
         val resists = testUnit.hasResistance("res")
         val weaks = testUnit.hasWeakness("weak")
+        val shouldBeZero = testUnit.hasResistance("Tag")
+        val shouldAlsoBeZero = testUnit.hasWeakness("Tag")
+        val thisTooShouldBeZero = testUnit.hasResistance("Nonexistent")
+        val oneMoreZeroForGoodMeasure = testUnit.hasWeakness("Nonexistent")
         assertEquals(3, resists)
         assertEquals(5, weaks)
+        assertEquals(0, shouldBeZero)
+        assertEquals(0, shouldAlsoBeZero)
+        assertEquals(0, thisTooShouldBeZero)
+        assertEquals(0, oneMoreZeroForGoodMeasure)
     }
 
     @Test
